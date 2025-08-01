@@ -1,0 +1,333 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2vw;
+  position: relative;
+}
+
+/* Contact Button Styles */
+.contact-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #333;
+  border: 2px solid #555;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+}
+
+.contact-button:hover {
+  transform: scale(1.1);
+  border-color: #ff9500;
+  box-shadow: 0 6px 20px rgba(255, 149, 0, 0.3);
+}
+
+.contact-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.contact-tooltip {
+  position: absolute;
+  top: 50%;
+  right: 75px;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.95);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  white-space: nowrap;
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.3s ease;
+  border: none;
+  z-index: 1001;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.contact-tooltip::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -6px;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 6px solid rgba(0, 0, 0, 0.95);
+}
+
+.contact-tooltip.show {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Force show tooltip on hover as backup */
+.contact-button:hover .contact-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Social Media Modal */
+.social-modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  background: #111;
+  margin: 10% auto;
+  padding: 20px;
+  border: 2px solid #333;
+  border-radius: 15px;
+  width: 95%;
+  max-width: 350px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+/* Better spacing on larger screens */
+@media (min-width: 600px) {
+  .modal-content {
+    margin: 15% auto;
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+  }
+}
+
+.close-btn {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #ff9500;
+}
+
+.modal-content h3 {
+  color: white;
+  margin-bottom: 25px;
+  font-size: 24px;
+  font-weight: 300;
+}
+
+.social-links {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+
+/* Two columns on larger screens */
+@media (min-width: 600px) {
+  .social-links {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 15px;
+  background: #222;
+  border: 1px solid #444;
+  border-radius: 10px;
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  gap: 10px;
+}
+
+.social-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+}
+
+.social-icon {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  flex-shrink: 0;
+}
+
+.calculator {
+  background: #000;
+  border: 2px solid #333;
+  border-radius: 3vw;
+  padding: 3vw;
+  width: 90vw;
+  max-width: 300px;
+  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.1);
+}
+
+.display {
+  background: #000;
+  padding: 4vw 2vw 2vw;
+  text-align: right;
+  margin-bottom: 3vw;
+}
+
+.result {
+  color: white;
+  font-size: 12vw;
+  font-weight: 300;
+  line-height: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2vw;
+}
+
+.btn {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: none;
+  font-size: 5vw;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+.btn.number {
+  background: #333;
+  color: white;
+}
+
+.btn.function {
+  background: #a6a6a6;
+  color: black;
+}
+
+.btn.operator {
+  background: #ff9500;
+  color: white;
+}
+
+.btn.operator.active {
+  background: white;
+  color: #ff9500;
+}
+
+/* Special styling for backspace symbol */
+.btn[data-action="backspace"] {
+  font-size: 4vw;
+}
+
+/* Larger screens - switch to fixed sizes */
+@media (min-width: 600px) {
+  body {
+    padding: 20px;
+  }
+
+  .calculator {
+    width: 300px;
+    border: 2px solid #333;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 8px 32px rgba(255, 255, 255, 0.1);
+  }
+
+  .display {
+    padding: 30px 15px 15px;
+    margin-bottom: 20px;
+  }
+
+  .result {
+    font-size: 60px;
+  }
+
+  .buttons {
+    gap: 12px;
+  }
+
+  .btn {
+    font-size: 24px;
+  }
+
+  .btn[data-action="backspace"] {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 768px) {
+  .calculator {
+    width: 320px;
+    padding: 25px;
+  }
+
+  .display {
+    padding: 40px 20px 20px;
+  }
+
+  .result {
+    font-size: 80px;
+  }
+
+  .buttons {
+    gap: 15px;
+  }
+
+  .btn {
+    font-size: 32px;
+  }
+
+  .btn[data-action="backspace"] {
+    font-size: 24px;
+  }
+}
