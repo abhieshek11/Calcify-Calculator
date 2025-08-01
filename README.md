@@ -2,7 +2,7 @@
 
 A sleek, responsive calculator web application that mimics the iOS calculator design with modern features and smooth animations.
 
-![Calculator Preview](https://calcifying.netlify.app/)
+Calculator Preview https://calcifying.netlify.app/
 
 ## 🚀 Features
 
@@ -192,4 +192,5 @@ This project is open source and available under the [MIT License](LICENSE).
 ---
 
 ⭐ **Star this repo if you found it helpful!**
+
 
